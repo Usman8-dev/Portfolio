@@ -5,34 +5,34 @@
 }
 
 :root {
-    --primary-color: #6366f1;
-    --secondary-color: #8b5cf6;
-    --dark-color: #1e1b4b;
-    --light-color: #f8fafc;
-    --text-color: #64748b;
-    --gradient: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
-    --box-shadow: 0 10px 40px rgba(0,0,0,0.1);
-    --transition: all 0.3s ease;
-    
-    /* Light theme default */
-    --bg-primary: #ffffff;
-    --bg-secondary: #f8fafc;
-    --text-primary: #1e1b4b;
-    --text-secondary: #64748b;
-    --navbar-bg: rgba(255, 255, 255, 0.95);
-    --card-bg: #ffffff;
-    --border-color: #e2e8f0;
+  --primary-color: #6366f1;
+  --secondary-color: #8b5cf6;
+  --dark-color: #1e1b4b;
+  --light-color: #f8fafc;
+  --text-color: #64748b;
+  --gradient: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+  --box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  --transition: all 0.3s ease;
+
+  /* Light theme default */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8fafc;
+  --text-primary: #1e1b4b;
+  --text-secondary: #64748b;
+  --navbar-bg: rgba(255, 255, 255, 0.95);
+  --card-bg: #ffffff;
+  --border-color: #e2e8f0;
 }
 
 [data-theme="dark"] {
-    --bg-primary: #0f172a;
-    --bg-secondary: #1e293b;
-    --text-primary: #f8fafc;
-    --text-secondary: #94a3b8;
-    --navbar-bg: rgba(15, 23, 42, 0.95);
-    --card-bg: #1e293b;
-    --border-color: #334155;
-    --box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+  --bg-primary: #0f172a;
+  --bg-secondary: #1e293b;
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --navbar-bg: rgba(15, 23, 42, 0.95);
+  --card-bg: #1e293b;
+  --border-color: #334155;
+  --box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
 }
 
 html {
@@ -78,28 +78,28 @@ body {
 
 /* Theme Toggle Button */
 .theme-toggle {
-    background: var(--gradient);
-    border: none;
-    width: 42px;
-    height: 42px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: var(--transition);
-    color: white;
-    font-size: 1.1rem;
-    z-index: 1001;
+  background: var(--gradient);
+  border: none;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: var(--transition);
+  color: white;
+  font-size: 1.1rem;
+  z-index: 1001;
 }
 
 .theme-toggle:hover {
-    transform: scale(1.1);
-    box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+  transform: scale(1.1);
+  box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
 }
 
 .theme-toggle i {
-    transition: transform 0.5s ease;
+  transition: transform 0.5s ease;
 }
 
 .logo span {
@@ -377,7 +377,7 @@ section {
 .section-header h2 {
   font-size: 2.5rem;
   font-weight: 700;
-  color: var(--dark-color);
+  color: var(--text-primary);
   margin-bottom: 0.5rem;
 }
 
@@ -391,7 +391,8 @@ section {
 
 /* About Section */
 .about-section {
-  background: white;
+  background: var(--bg-primary);
+  transition: var(--transition);
 }
 
 .about-content {
@@ -433,7 +434,8 @@ section {
 
 /* Skills Section */
 .skills-section {
-  background: #f8fafc;
+  background: var(--bg-secondary);
+  transition: var(--transition);
 }
 
 .skills-grid {
@@ -443,7 +445,7 @@ section {
 }
 
 .skill-card {
-  background: white;
+  background: var(--card-bg);
   padding: 2rem;
   border-radius: 15px;
   text-align: center;
@@ -487,7 +489,8 @@ section {
 
 /* Projects Section */
 .projects-section {
-  background: white;
+  background: var(--bg-primary);
+  transition: var(--transition);
 }
 
 .projects-grid {
@@ -497,7 +500,7 @@ section {
 }
 
 .project-card {
-  background: white;
+  background: var(--card-bg);
   border-radius: 15px;
   overflow: hidden;
   box-shadow: var(--box-shadow);
@@ -584,7 +587,8 @@ section {
 
 /* Contact Section */
 .contact-section {
-  background: #f8fafc;
+  background: var(--bg-secondary);
+  transition: var(--transition);
 }
 
 .contact-content {
@@ -632,10 +636,11 @@ section {
 }
 
 .contact-form {
-  background: white;
+  background: var(--card-bg);
   padding: 2rem;
   border-radius: 15px;
   box-shadow: var(--box-shadow);
+  transition: var(--transition);
 }
 
 .form-group {
