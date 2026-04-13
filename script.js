@@ -1,17 +1,24 @@
-// Typing Effect
-const roles = ['Web Developer', 'Frontend Developer', 'Software Engineer', 'UI/UX Enthusiast', 'Problem Solver'];
+// ==================== TYPING EFFECT ====================
+const roles = [
+    'Web Developer', 
+    'Frontend Developer', 
+    'Software Engineer', 
+    'UI/UX Enthusiast', 
+    'Problem Solver'
+];
+
 let roleIndex = 0;
 let charIndex = 0;
 let isDeleting = false;
+let timeoutId = null;
 
 function typeEffect() {
     const typingText = document.querySelector('.typing-text');
-    
-    // Only run if typing element exists on current page
     if (!typingText) return;
-    
+
     const currentRole = roles[roleIndex];
-    
+
+    // Typing or Deleting logic
     if (isDeleting) {
         typingText.textContent = currentRole.substring(0, charIndex - 1);
         charIndex--;
@@ -20,20 +27,23 @@ function typeEffect() {
         charIndex++;
     }
 
-    let typeSpeed = isDeleting ? 50 : 100;
+    let typeSpeed = isDeleting ? 40 : 80;
 
+    // Finished typing the current word
     if (!isDeleting && charIndex === currentRole.length) {
-        typeSpeed = 2000;
+        typeSpeed = 1800;     // Longer pause at end of word
         isDeleting = true;
-    } else if (isDeleting && charIndex === 0) {
+    } 
+    // Finished deleting the current word
+    else if (isDeleting && charIndex === 0) {
         isDeleting = false;
         roleIndex = (roleIndex + 1) % roles.length;
-        typeSpeed = 500;
+        typeSpeed = 700;      // Pause before starting next word
     }
 
-    setTimeout(typeEffect, typeSpeed);
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(typeEffect, typeSpeed);
 }
-
 // Navigation
 const hamburger = document.querySelector('.hamburger');
 const navMenu = document.querySelector('.nav-menu');
@@ -73,12 +83,14 @@ window.addEventListener('scroll', () => {
 
     // Back to Top Button
     const backToTop = document.getElementById('backToTop');
-    if (window.scrollY > 300) {
-        backToTop.style.opacity = '1';
-        backToTop.style.visibility = 'visible';
-    } else {
-        backToTop.style.opacity = '0';
-        backToTop.style.visibility = 'hidden';
+    if (backToTop) {
+        if (window.scrollY > 300) {
+            backToTop.style.opacity = '1';
+            backToTop.style.visibility = 'visible';
+        } else {
+            backToTop.style.opacity = '0';
+            backToTop.style.visibility = 'hidden';
+        }
     }
 });
 
@@ -114,33 +126,78 @@ document.querySelectorAll('section').forEach(section => {
 });
 
 // Back to Top Functionality
-document.getElementById('backToTop').addEventListener('click', () => {
-    window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
+const backToTopBtn = document.getElementById('backToTop');
+if (backToTopBtn) {
+    backToTopBtn.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
     });
-});
+}
 
 // Contact Form Handling
-document.getElementById('contactForm').addEventListener('submit', (e) => {
-    e.preventDefault();
+const contactForm = document.getElementById('contactForm');
+if (contactForm) {
+    contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        const btn = document.querySelector('.form-btn');
+        const originalText = btn.innerHTML;
+        btn.innerHTML = '<i class="fas fa-check"></i> Message Sent!';
+        btn.style.background = 'linear-gradient(135deg, #10b981 0%, #059669 100%)';
+        
+        setTimeout(() => {
+            btn.innerHTML = originalText;
+            btn.style.background = '';
+            document.getElementById('contactForm').reset();
+        }, 3000);
+    });
+}
+
+// Theme Toggle Functionality
+function setTheme(theme) {
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
     
-    const btn = document.querySelector('.form-btn');
-    const originalText = btn.innerHTML;
-    btn.innerHTML = '<i class="fas fa-check"></i> Message Sent!';
-    btn.style.background = 'linear-gradient(135deg, #10b981 0%, #059669 100%)';
+    const themeToggle = document.querySelector('.theme-toggle');
+    if (themeToggle) {
+        const icon = themeToggle.querySelector('i');
+        if (theme === 'dark') {
+            icon.classList.remove('fa-moon');
+            icon.classList.add('fa-sun');
+        } else {
+            icon.classList.remove('fa-sun');
+            icon.classList.add('fa-moon');
+        }
+    }
     
-    setTimeout(() => {
-        btn.innerHTML = originalText;
-        btn.style.background = '';
-        document.getElementById('contactForm').reset();
-    }, 3000);
+    // Apply theme styles
+    document.body.style.backgroundColor = theme === 'dark' ? '#0f172a' : '#ffffff';
+}
+
+// Initialize theme after DOM is fully loaded
+document.addEventListener('DOMContentLoaded', () => {
+    // Check saved theme on load
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    setTheme(savedTheme);
+    
+    const themeToggle = document.querySelector('.theme-toggle');
+    if (themeToggle) {
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            setTheme(newTheme);
+        });
+    }
 });
 
 // Initialize
 window.addEventListener('load', () => {
-    // Force start typing effect after page fully loaded
-    typeEffect();
+    const typingText = document.querySelector('.typing-text');
+    if (typingText) typingText.textContent = '';
+    
+    typeEffect();        // Start typing
 });
 
 // Smooth scroll for anchor links
