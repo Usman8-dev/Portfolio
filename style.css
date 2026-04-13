@@ -312,11 +312,24 @@ body {
   animation: float 6s ease-in-out infinite;
 }
 
-.profile-inner {
+/* .profile-inner {
   width: 100%;
   height: 100%;
   border-radius: 50%;
   background: linear-gradient(135deg, #e0e7ff 0%, #c7d2fe 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+} */
+ .profile-inner {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-image: url('../Home_page_image.png') ;
+  background-size: 110%;
+  background-position: center;
+  background-repeat: no-repeat;
+  
   display: flex;
   align-items: center;
   justify-content: center;
@@ -405,7 +418,10 @@ section {
 .about-card {
   width: 100%;
   height: 450px;
-  background: linear-gradient(135deg, #e0e7ff 0%, #c7d2fe 100%);
+  /* background: linear-gradient(135deg, #e0e7ff 0%, #c7d2fe 100%);
+  border-radius: 20px;*/
+  background-image: url('../Telecommuting.gif') ;
+  /* background-size: 110%; */
   border-radius: 20px;
   box-shadow: var(--box-shadow);
 }
@@ -413,7 +429,7 @@ section {
 .about-text h3 {
   font-size: 1.8rem;
   margin-bottom: 1.5rem;
-  color: var(--dark-color);
+  color: var(--text-primary);
 }
 
 .about-text p {
