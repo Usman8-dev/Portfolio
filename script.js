@@ -1,9 +1,8 @@
 // ==================== TYPING EFFECT ====================
 const roles = [
-    'Web Developer', 
-    'Frontend Developer', 
     'Software Engineer', 
-    'UI/UX Enthusiast', 
+    'Web Developer', 
+    'Backend Developer', 
     'Problem Solver'
 ];
 
