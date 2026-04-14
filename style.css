@@ -154,11 +154,11 @@ body {
 }
 
 .hamburger span {
-  width: 25px;
-  height: 3px;
-  background: var(--dark-color);
-  border-radius: 3px;
-  transition: var(--transition);
+    width: 25px;
+    height: 3px;
+    background: var(--text-primary);
+    border-radius: 3px;
+    transition: var(--transition);
 }
 
 /* Hero Section */
@@ -785,11 +785,11 @@ footer {
     left: -100%;
     top: 70px;
     flex-direction: column;
-    background-color: white;
+    background-color: var(--navbar-bg);
     width: 100%;
     text-align: center;
     transition: 0.3s;
-    box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+    box-shadow: var(--box-shadow);
     padding: 2rem 0;
   }
 
